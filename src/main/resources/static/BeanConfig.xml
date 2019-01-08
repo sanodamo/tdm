@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario-list>
+	<scenario name="active-member" description="Active members for a specific client" api="/api/:product/members/active-member/:clientId" dependent="drilldown">
+		<task bean="Member" action="GET_ACTIVE_MEMBER" drilldownTo="/api/:product/drilldown-to/physician/memberwise-physician/:memberId"/>		
+	</scenario>
+	<scenario name="pcca-member" description="PCCA enabled members for a specific client" api="/api/:product/members/pcca-member/:clientId" dependent="no-dependency">
+		<task bean="Member" action="GET_ACTIVE_MEMBER"/>		
+		<task bean="Physician" action="GET_ANY_PHYSICIAN"/>
+		<task bean="Provider" action="GET_ANY_PROVIDER"/>
+	</scenario>
+	<scenario name="dual-member" description="Dual members for a specific client" api="/api/:product/members/dual-member/:clientId" dependent="cascading">
+		<task bean="Member" action="GET_ACTIVE_MEMBER"/>		
+		<task bean="Physician" action="GET_ANY_PHYSICIAN"/>
+		<task bean="Provider" action="GET_ANY_PROVIDER"/>		
+	</scenario>	
+	
+	<scenario name="memberwise-physician" description="Member location specific physician" api="/api/:product/drilldown-to/physician/memberwise-physician/:memberId">
+		<task bean="Physician" action="GET_ACTIVE_MEMBER"/>		
+	</scenario>
+	
+		
+	<scenario name="local-physician" description="local physician for a specific client" api="/api/:product/physician/local-physician/:clientId">
+		<task bean="Member" action="GET_ACTIVE_MEMBER"/>		
+	</scenario>
+	
+	<scenario name="national-physician" description="national physician" api="/api/:product/physician/national-physician/:clientId">
+		<task bean="Member" action="GET_ACTIVE_MEMBER"/>		
+	</scenario>
+	
+	<scenario name="contracted-physician" description="contracted physician for a specific client" api="/api/:product/physician/contracted-physician/:clientId">
+		<task bean="Member" action="GET_ACTIVE_MEMBER"/>		
+	</scenario>
+	
+	<scenario name="not-contracted-physician" description="not contracted physician for a specific client" api="/api/:product/physician/not-contracted-physician/:clientId">
+		<task bean="Member" action="GET_ACTIVE_MEMBER"/>		
+	</scenario>
+	
+	<scenario name="physician-without-fax" description="physician without fax for a specific client" api="/api/:product/physician/physician-without-fax/:clientId">
+		<task bean="Member" action="GET_ACTIVE_MEMBER"/>		
+	</scenario>
+	
+	<scenario name="manual-physician" description="manually added physician for a specific client" api="/api/:product/physician/manual-physician/:clientId">
+		<task bean="Member" action="GET_ACTIVE_MEMBER"/>		
+	</scenario>
+		
+	<scenario name="sanctioned-physician" description="sanctioned physician for a specific client" api="/api/:product/physician/sanctioned-physician/:clientId">
+		<task bean="Member" action="GET_ACTIVE_MEMBER"/>		
+	</scenario>
+	
+	<scenario name="optout-physician" description="opt out physician for a specific client" api="/api/:product/physician/optout-physician/:clientId">
+		<task bean="Member" action="GET_ACTIVE_MEMBER"/>		
+	</scenario>
+	
+	<scenario name="oon-provider" description="OON provider for a specific client" api="/api/:product/provider/oon-provider/:clientId">
+		<task bean="Member" action="GET_ACTIVE_MEMBER"/>		
+	</scenario>
+		
+</scenario-list>
