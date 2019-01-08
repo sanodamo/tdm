@@ -5,5 +5,5 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConfigurationProperties(prefix="spring.datasource.preauth.member")
-public class Database extends DatabaseProperties  {	
+public class Database extends DatabaseProperties {	
 }
